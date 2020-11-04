@@ -1,16 +1,29 @@
 # wiicitypicker
 
-A new Flutter application.
+省市区（县）街道（乡镇）4级地址选择器
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+使用方法：
+showModalBottomSheet(
+        context: context,
+        builder: (context) => BottomSheet(
+            onClosing: () {},
+            builder: (context) => Container(
+              //设置弹出组件的高度
+              height: 300.0,
+              child: AddressPicker(
+                //设置字体
+                TextStyle(color: Colors.black, fontSize: 14),
+                //选择的地址信息
+                (address) {
+                  print(address.currentProvince.code+" "+address.currentProvince.name+" "+address.currentCity.code
+                      +" "+address.currentCity.name+" "+address.currentDistrict.code+" "+address.currentDistrict.name+" "
+                      +address.currentStreet.code +" "+address.currentStreet.name);
+                },
+              ),
+            )
+          )
+       );
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
